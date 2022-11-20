@@ -162,23 +162,22 @@ function calculateCompatibility() {
     console.log("totalWeight = " + totalWeight);
 
     const COMPATIBILITY_RANGE = [
-        totalWeight >= 85,
+        85 <= totalWeight,
         70 <= totalWeight <= 84,
         totalWeight <= 69
-    ]
+    ];
 
     document.getElementById("compatibility").innerHTML = "Your compatibility is " + totalWeight + "%";
-    
+
+    // Closing remarks based on capatibility ranges    
     if (totalWeight = COMPATIBILITY_RANGE[0]) {
-        document.getElementById("closingRemark").innerHTML = "I'd rearrange the alphabet to put U and I together.";
-    } 
-    
-    if (totalWeight = COMPATIBILITY_RANGE[1]) {
-        document.getElementById("closingRemark").innerHTML = "Do you have a name, or should I call you my new best friend?";
-    } 
+        document.getElementById("closingRemark").innerHTML = "I'd rearrange the alphabet to put U and I together."
+    } else if (totalWeight = COMPATIBILITY_RANGE[1]) {
+        document.getElementById("closingRemark").innerHTML = "Do you have a name, or should I call you my new best friend?"
+    };
     
     if (totalWeight = COMPATIBILITY_RANGE[2]) {
-        document.getElementById("closingRemark").innerHTML = "Physics lied. Opposites don\'t attract. Bye.";
+        document.getElementById("closingRemark").innerHTML = "Physics lied. Opposites don't attract. Bye."
     };
 
     // Question summary: shows question compatibility & question weighted compatibility
