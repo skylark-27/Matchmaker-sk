@@ -1,35 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<!--
+    Author: Skylar Koczor
+    Project: Matchmaker
+-->
 <head>
-<title>Matchmaker</title>
+    <meta charset="UTF-8">
+    <title>Matchmaker</title>
 </head>
+
 <body>
-<h1>Matchmaker</h1>
-<p>Find your true love using Matchmaker!</p>
-<label>
-    I love dogs.
-</label>
-<br>
+    <h1>Matchmaker</h1>
+    <p>Matchmaker determines whether you and I are meant for 
+    each other. You will be presented with 5 statements. 
+    Respond to them with a number 1-5. If you strongly
+    disagree, respond with a 1. Respond with a 2 is you 
+    disagree. If you neither agree nor disagree, respond 
+    with a 3. Respond with a 4 is you agree, and 5 if you 
+    strongly agree.</p>
+        
+    <p>Did Cupid stike us with an arrow, or did he miss?
+    Use Matchmaker to find out...</p>
+    
+    <label>I love dogs.</label><br />
+    <select id="q1">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <p id="q1Compatibility"></p>
+    <p id="q1Weight"></p>
 
-<select id = "q1">
-    <option value="5">Strongly Agree</option>
-    <option value="4">Strongly Agree</option>
-    <option value="3">Strongly Agree</option>
-    <option value="2">Strongly Agree</option>
-    <option value="1">Strongly Disagree</option>
-</select>
-<br>
+    <br />
 
-<button onclick="calculateLove()">
-    Calculate Compatibility
-</button>
+    <label>I enjoy going to parties.</label><br />
+    <select id="q2">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <p id="q2Compatibility"></p>
+    <p id="q2Weight"></p>
+
+    <br />
+    
+    <label>Loki is my favorite Marvel character.</label><br />
+    <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <p id="q3Compatibility"></p>
+    <p id="q3Weight"></p>
+    
+    <br />
+    
+    <label>The Chicago Cubs are my favorite baseball team.</label><br />
+    <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <p id="q4Compatibility"></p>
+    <p id="q4Weight"></p>
+    
+    <br />
+    
+    <label>I get aggravated easily while driving.</label><br />
+    <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither Agree nor Disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <p id="q5Compatibility"></p>
+    <p id="q5Weight"></p>
+
+    <br /><br />
+
+    <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+    <p id="compatibility"></p>
+    <p id="closingRemark"></p>
+
+    <br /><br />
 
 <script>
-    console.log("starting")
+console.log("Starting Matchmaker Lite...");
 
-    function calculateLove() {
-        console.log("Calculating Love")
-    }
+function calculateCompatibility() {
+    console.log("calculateCompatibility()");
+
+    const DESIRED_RESPONSE = [
+        5, /* strongly agree */
+        2, /* disagree */
+        1, /* strongly disagree */
+        5, /* strongly agree */
+        1  /* strongly disagree */
+    ];
+
+    const QUESTION_WEIGHT = [
+        3,
+        3,
+        1,
+        2,
+        3
+    ];
+
+    const MAX_SCORE = 25;
+
+    const MAX_WEIGHT = 60;
+
+    // Get the current values of the dropdown controls
+    let question1Response = document.getElementById("q1").selectedOptions[0].value;
+    let question2Response = document.getElementById("q2").selectedOptions[0].value;
+    let question3Response = document.getElementById("q3").selectedOptions[0].value;
+    let question4Response = document.getElementById("q4").selectedOptions[0].value;
+    let question5Response = document.getElementById("q5").selectedOptions[0].value;
+
+    // Calculate compatibility & weighted scores
+    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+    let question1Weight = question1Compatibility * QUESTION_WEIGHT[0];
+    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+    let question2Weight = question2Compatibility * QUESTION_WEIGHT[1];
+    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+    let question3Weight = question3Compatibility * QUESTION_WEIGHT[2];
+    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+    let question4Weight = question4Compatibility * QUESTION_WEIGHT[3];
+    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
+    let question5Weight = question5Compatibility * QUESTION_WEIGHT[4];
+
+    console.log("c1 = " + question1Compatibility);
+    console.log("w1 = " + question1Weight);
+    console.log("c2 = " + question2Compatibility);
+    console.log("w2 = " + question2Weight);
+    console.log("c3 = " + question3Compatibility);
+    console.log("w3 = " + question3Weight);
+    console.log("c4 = " + question4Compatibility);
+    console.log("w4 = " + question4Weight);
+    console.log("c5 = " + question5Compatibility);
+    console.log("w5 = " + question5Weight);
+    
+    // Calculate total compatibility & total weighted compatibility
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
+    let totalWeight = question1Weight + question2Weight + question3Weight + question4Weight + question5Weight;
+
+    // Convert totalCompatibility & totalWeight to a percentage
+    totalCompatibility *= 100 / MAX_SCORE;
+    totalCompatibility = Math.round(totalCompatibility);
+    console.log("totalCompatibility = " + totalCompatibility);
+    totalWeight *= 100 / MAX_WEIGHT;
+    totalWeight = Math.round(totalWeight);
+    console.log("totalWeight = " + totalWeight);
+
+    const COMPATIBILITY_RANGE = [
+        totalWeight >= 85,
+        70 <= totalWeight <= 84,
+        totalWeight <= 69
+    ]
+
+    document.getElementById("compatibility").innerHTML = "Your compatibility is " + totalWeight + "%";
+    
+    if (totalWeight = COMPATIBILITY_RANGE[0]) {
+        document.getElementById("closingRemark").innerHTML = "I'd rearrange the alphabet to put U and I together.";
+    } 
+    
+    if (totalWeight = COMPATIBILITY_RANGE[1]) {
+        document.getElementById("closingRemark").innerHTML = "Do you have a name, or should I call you my new best friend?";
+    } 
+    
+    if (totalWeight = COMPATIBILITY_RANGE[2]) {
+        document.getElementById("closingRemark").innerHTML = "Physics lied. Opposites don\'t attract. Bye.";
+    };
+
+    // Question summary: shows question compatibility & question weighted compatibility
+    document.getElementById("q1Compatibility").innerHTML = "Question compatibility: " + question1Compatibility;
+    document.getElementById("q1Weight").innerHTML = "Question weighted compatibility: " + question1Weight;
+    document.getElementById("q2Compatibility").innerHTML = "Question compatibility: " + question2Compatibility;
+    document.getElementById("q2Weight").innerHTML = "Question weighted compatibility: " + question2Weight;
+    document.getElementById("q3Compatibility").innerHTML = "Question compatibility: " + question3Compatibility;
+    document.getElementById("q3Weight").innerHTML = "Question weighted compatibility: " + question3Weight;
+    document.getElementById("q4Compatibility").innerHTML = "Question compatibility: " + question4Compatibility;
+    document.getElementById("q4Weight").innerHTML = "Question weighted compatibility: " + question4Weight;
+    document.getElementById("q5Compatibility").innerHTML = "Question compatibility: " + question5Compatibility;
+    document.getElementById("q5Weight").innerHTML = "Question weighted compatibility: " + question5Weight;
+}
+
 </script>
+
 </body>
+
 </html>
