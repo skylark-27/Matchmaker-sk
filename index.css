@@ -1,0 +1,45 @@
+body {
+    background-color: #E0B1CB;
+    color: #231942;
+    text-align: center;
+}
+
+h1 {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.363);
+    letter-spacing: 5px;
+}
+
+#directions {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.208);
+    margin-right: 180px;
+    margin-left: 180px;
+}
+
+.instructions {
+    background-color: #efd8e4b4;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.208);
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+button {
+    border-radius: 5px;
+    padding: 14px 28px;
+    font-size: 16px;
+    background-color: #be95c498;
+    color:  #231942;
+    border-color: #BE95C4;
+}
+
+select {
+    border-radius: 5px;
+    background-color: #F5E7EF;
+    color: #231942;
+    text-align: center;
+}

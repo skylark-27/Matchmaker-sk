@@ -8,20 +8,21 @@
     <meta charset="UTF-8">
     <title>Matchmaker</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <h1>Matchmaker</h1>
-    <p>Matchmaker determines whether you and I are meant for 
+<div class="instructions">
+    <h1><i class="material-icons">favorite</i> Matchmaker <i class="material-icons">favorite</i></h1>
+    <p id="directions"><b>Matchmaker determines whether you and I are meant for 
     each other. You will be presented with 5 statements. 
-    Respond to them with a number 1-5. If you strongly
-    disagree, respond with a 1. Respond with a 2 is you 
-    disagree. If you neither agree nor disagree, respond 
-    with a 3. Respond with a 4 is you agree, and 5 if you 
-    strongly agree.</p>
+    Use the drop down to select the answer that represents you the best in regards to the statement. 
+    Possible answers include: Stongly Agree, Agree, Neither Agree nor Disagree, 
+    Disagree, or Strongly Disagree.</b></p>
         
-    <p>Did Cupid stike us with an arrow, or did he miss?
-    Use Matchmaker to find out...</p>
+    <p id="directions"><b>Did Cupid stike us with an arrow, or did he miss?
+    Use Matchmaker to find out...</b></p>
+</div><br /><br />
     
     <label>I love dogs.</label><br />
     <select id="q1">
@@ -86,7 +87,7 @@
     <p id="q5Compatibility"></p>
     <p id="q5Weight"></p>
 
-    <br /><br />
+    <br />
 
     <button onclick="calculateCompatibility()">Calculate Compatibility</button>
     <p id="compatibility"></p>
@@ -172,7 +173,7 @@ function calculateCompatibility() {
 
     // Closing remarks based on capatibility ranges    
     if (totalWeight = COMPATIBILITY_RANGE[0]) {
-        document.getElementById("closingRemark").innerHTML = "I'd rearrange the alphabet to put U and I together."
+        document.getElementById("closingRemark").innerHTML = "I'd rearrange the alphabet to put U and I together. ♥"
     } else if (totalWeight = COMPATIBILITY_RANGE[1]) {
         document.getElementById("closingRemark").innerHTML = "Do you have a name, or should I call you my new best friend?"
     };
